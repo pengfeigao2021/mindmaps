@@ -1,0 +1,31 @@
+% simple document template
+\documentclass[12pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs}
+\usetikzlibrary {mindmap}
+\begin{document}
+
+
+\begin{tikzpicture}[mindmap, concept color=red!50,
+every node/.style={concept, execute at begin node=\hskip0pt},
+ grow cyclic,
+ level 1/.append style={concept color=yellow!50},
+ level 2/.append style={concept color=red!50}
+ ]
+
+  \node [concept] {r1 root node is simple  }
+    child {
+    node {c1}
+    	child {node {c2}}
+	child {node(c3) [ concept color=blue!30] {c3}}
+    }
+    child {node(c4) {c4}};
+    
+    
+  \draw [concept connection] 
+                                (c3) edge (c4);
+   \end{tikzpicture} 
+
+
+    
+\end{document}
