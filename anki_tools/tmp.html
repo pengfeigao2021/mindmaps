@@ -1,0 +1,99 @@
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+        <div class="rst-content">
+            <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+                <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+                    <section id="inference-mode">
+                        <h1>inference_mode<a class="headerlink" href="#inference-mode"
+                                title="Permalink to this heading">¶</a></h1>
+                        <dl class="py class">
+                            <dt class="sig sig-object py" id="torch.inference_mode"><em class="property"><span
+                                        class="pre">class</span><span class="w"> </span></em><span
+                                    class="sig-prename descclassname"><span class="pre">torch.</span></span><span
+                                    class="sig-name descname"><span class="pre">inference_mode</span></span><span
+                                    class="sig-paren">(</span><em class="sig-param"><span class="n"><span
+                                            class="pre">mode</span></span><span class="o"><span
+                                            class="pre">=</span></span><span class="default_value"><span
+                                            class="pre">True</span></span></em><span class="sig-paren">)</span><a
+                                    class="reference internal"
+                                    href="../_modules/torch/autograd/grad_mode.html#inference_mode"><span
+                                        class="viewcode-link"><span class="pre">[source]</span></span></a><a
+                                    class="headerlink" href="#torch.inference_mode"
+                                    title="Permalink to this definition">¶</a></dt>
+                            <dd>
+                                <p>Context-manager that enables or disables inference mode</p>
+                                <p>InferenceMode is a new context manager analogous to <a class="reference internal"
+                                        href="torch.no_grad.html#torch.no_grad" title="torch.no_grad"><code
+                                            class="xref py py-class docutils literal notranslate"><span class="pre">no_grad</span></code></a>to
+                                    be used when you are certain your operations&nbsp;</p>
+                                <p>
+                                    <font color="#30d158">will have no interactionswith autograd </font>(e.g., model
+                                    training). Code run under this mode gets betterperformance by disabling view
+                                    tracking and version counter bumps. Note thatunlike some other mechanisms that
+                                    locally enable or disable grad,entering inference_mode also disables to <a
+                                        class="reference internal" href="../autograd.html#forward-mode-ad"><span
+                                            class="std std-ref">forward-mode AD</span></a>.
+                                </p>
+                                <p>This context manager is thread local; it will not affect computationin other threads.
+                                </p>
+                                <p>Also functions as a decorator. (Make sure to instantiate with parenthesis.)</p>
+                                <div class="admonition note">
+                                    <p class="admonition-title">Note</p>
+                                    <p>Inference mode is one of several mechanisms that can enable ordisable gradients
+                                        locally see <a class="reference internal"
+                                            href="../notes/autograd.html#locally-disable-grad-doc"><span
+                                                class="std std-ref">Locally disabling gradient computation</span></a>
+                                        formore information on how they compare.</p>
+                                </div>
+                                <dl class="field-list simple">
+                                    <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+                                    <dd class="field-odd">
+                                        <p><strong>mode</strong> (<a class="reference external"
+                                                href="https://docs.python.org/3/library/functions.html#bool"
+                                                title="(in Python v3.11)"><em>bool</em></a>) – Flag whether to enable or
+                                            disable inference mode</p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>Example::</dt>
+                                    <dd>
+                                        <div class="doctest highlight-default notranslate">
+                                            <div class="highlight">
+                                                <pre><span></span>&gt;&gt;&gt; import torch&gt;&gt;&gt; x = torch.ones(1, 2, 3, requires_grad=True)&gt;&gt;&gt; with torch.inference_mode():...     y = x * x&gt;&gt;&gt; y.requires_gradFalse&gt;&gt;&gt; y._versionTraceback (most recent call last):File "&lt;stdin&gt;", line 1, in &lt;module&gt;RuntimeError: Inference tensors do not track version counter.&gt;&gt;&gt; @torch.inference_mode()... def func(x):...     return x * x&gt;&gt;&gt; out = func(x)&gt;&gt;&gt; out.requires_gradFalse</pre>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </dd>
+                        </dl>
+                    </section>
+                </article>
+            </div>
+            <footer>
+                <div aria-label="footer navigation" class="rst-footer-buttons" role="navigation"><a accesskey="n"
+                        class="btn btn-neutral float-right" href="torch.is_inference_mode_enabled.html" rel="next"
+                        title="torch.is_inference_mode_enabled">Next <img class="next-page"
+                            src="../_static/images/chevron-right-orange.svg"></a><a accesskey="p"
+                        class="btn btn-neutral" href="torch.is_grad_enabled.html" rel="prev"
+                        title="torch.is_grad_enabled"><img class="previous-page"
+                            src="../_static/images/chevron-right-orange.svg"> Previous</a></div>
+                <hr>
+                <div role="contentinfo">
+                    <p> © Copyright 2023, PyTorch Contributors. </p>
+                </div>
+                <div> Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a
+                        href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a
+                        href="https://readthedocs.org">Read the Docs</a>. </div>
+            </footer>
+        </div>
+    </div>
+    <div class="pytorch-content-right" id="pytorch-content-right">
+        <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+                <ul>
+                    <li><a class="reference internal" href="#">inference_mode</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

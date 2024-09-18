@@ -1,0 +1,60 @@
+% simple document template
+\documentclass[dvisvgm]{minimal}
+% \documentclass{paper}
+\usepackage{tikz}
+\usetikzlibrary{graphs}
+\usetikzlibrary {mindmap}
+\usetikzlibrary {positioning}
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary {shapes.multipart}
+\usetikzlibrary {shapes.geometric}
+\usetikzlibrary {shapes.symbols}
+\usetikzlibrary {shapes.callouts}
+\usetikzlibrary {calc}
+\begin{document}
+
+% #ff9393	(255,147,147)
+% #fdbcb4	(253,188,180)
+% #ffefd5	(255,239,213)
+% #b9d9eb	(185,217,235)
+% #85b2b0	(133,178,176)
+
+% bee
+% #edde19
+% #000000
+\begin{tikzpicture}[none/.style={}, 
+      I/.style={line width=3, draw=white, rounded corners=7},
+      I2/.style={line width=14, draw=black, rounded corners=7},
+      finger/.style={line width=3, fill=yellow!30!white},
+      collar/.style={line width=3, fill=green!10!white}
+    ]
+    % define colors:
+    \definecolor {color1}{HTML}{ebbc6d};
+    \definecolor {color2}{HTML}{328948};
+    \definecolor {color3}{HTML}{285089};
+    \definecolor {color4}{HTML}{000000};
+    \definecolor {color5}{HTML}{edde19};
+    % \definecolor {color2}{rgb}{1.0,239,213};
+
+    \def \Iw {1.0};
+    \def \wid {2.2};
+    \def \hei {2.5};
+    \coordinate (a) at (0,0);
+    \coordinate (b1) at (-\wid, \hei + \Iw);
+    \coordinate (b2) at (\wid, \hei - \Iw);
+    \coordinate (c1) at (-\wid, -\hei + \Iw);
+    \coordinate (c2) at (\wid, -\hei - \Iw);
+    \coordinate (bm) at ($(b1)!0.5!(b2) + (\Iw, 0)$);
+    \coordinate (cm) at ($(c1)!0.5!(c2) + (-\Iw, 0)$);
+
+    % circle
+    \draw[fill=white] (a) circle (3cm);
+    \draw[draw=white, line width=5] (a) circle (3.3cm);
+    
+    \draw[I, fill=color4] (b1) rectangle (b2);
+    \draw[I, fill=color4] (c1) rectangle (c2);
+    \draw[I2, fill=color5] (bm) rectangle (cm);
+
+\end{tikzpicture}
+
+\end{document}

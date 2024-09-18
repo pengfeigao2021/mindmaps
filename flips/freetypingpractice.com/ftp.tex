@@ -1,0 +1,30 @@
+% simple document template
+\documentclass[12pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{graphs}
+\usetikzlibrary {mindmap}
+\usepackage{hyperref}
+\begin{document}
+
+\title{Flips Websites}
+\author{Pengfei}
+\date{\today}
+\maketitle
+
+% ==========[Section Server structure]===========
+\section{Server structure}
+\subsection{Django}
+Reason why we cannot use django directly:
+* security
+* performance: multiple users are executed sequentially
+
+\begin{verbatim}
+
+Use nginx + gunicorn.
+
+Nginx: five lines of configuration. Gunicorn: two lines of configuration. That's easy and efficient. For better control you can spawn the gunicorn process using supervisord.
+
+Both gunicorn and supervisord are available to install with pip, and nginx is available in almost any distribution in the default package pool.
+\end{verbatim}
+    
+\end{document}

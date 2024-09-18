@@ -1,0 +1,54 @@
+% simple document template
+\documentclass{paper}
+\usepackage{tikz}
+\usetikzlibrary{graphs}
+\usetikzlibrary {mindmap}
+\usetikzlibrary {positioning}
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary {shapes.multipart}
+\usetikzlibrary {shapes.geometric}
+\usetikzlibrary {shapes.symbols}
+\usetikzlibrary {shapes.callouts}
+\usetikzlibrary {calc}
+\begin{document}
+
+% #ff9393	(255,147,147)
+% #fdbcb4	(253,188,180)
+% #ffefd5	(255,239,213)
+% #b9d9eb	(185,217,235)
+% #85b2b0	(133,178,176)
+
+\section{LightGBM paper}
+\subsection{2017 LightGBM paper: A Highly Efficient Gradient Boosting Decision Tree}
+\begin{itemize}
+\item LightGBM is a gradient boosting framework that uses tree-based learning algorithms.
+\item Microsoft
+\item Efficient and scalable
+\item scan all the data instances to estimate the information gain
+\item 2 techniques
+\item GOSS and EFB
+\item GOSS: Gradient-based One-Side Sampling
+\item GOSS: remove small gradients
+\item EFB: Exclusive Feature Bundling
+\item EFB: remove mutual exclusive features
+\item results: x20 speedup
+\end{itemize}
+
+\subsection{Paramter tunning}
+\begin{itemize}
+    \item Parameters Tuning
+\item \textbf{num\_boosting\_rounds}: number of boosting iterations
+\item \textbf{learning\_rate}: step size shrinkage to prevent overfitting
+\item \textbf{num\_leaves}: maximum tree leaves
+\item \textbf{feature\_fraction}: fraction of features to be randomly selected at each split
+\item \textbf{bagging\_fraction}: fraction of training data to be randomly selected for each tree
+\item \textbf{bagging\_freq}: frequency of bagging
+\end{itemize}
+
+\subsection{FLAML: Auto Hyperparam tunning}
+\begin{itemize}
+    \item FLAML can choose between lightgbm and xgboost
+\end{itemize}
+
+
+\end{document}
