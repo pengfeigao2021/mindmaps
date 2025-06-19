@@ -1,0 +1,54 @@
+% generate an example tex article
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\begin{document}
+
+\title{Clustering}
+\author{Pengfei Gao}
+\date{\today}
+\maketitle
+\tableofcontents
+
+\section{SKLearn}
+
+%% Output a table of clustering algorithms in SKLearn
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Algorithm & Description \\
+\hline
+KMeans & convex shaped \\
+ & n-dim distance\\
+ & centroids: mean position \\
+\hline
+DBSCAN & Density-based clustering \\
+& eps, min samples \\
+& not convex shaped \\
+\hline
+HDBSCAN & Hierarchical Density-Based Spatial Clustering of Applications with Noise \\
+& allow different cluster density \\
+& $d_c$ n-th nearest neighbors distance \\
+& $d_m(x_p, x_q) = max\{d_c(x_p), d_c(x_q), d(x_p, x_q)\}$ \\
+& build a fully connected graph and cut edges by threshold \\
+\hline
+Spectral Clustering & Graph-based clustering \\
+& low dim embedding \\
+& A: Adjacency matrix \\
+& D: Degree matrix \\
+& L: Laplacian matrix \\
+& L = D - A\\
+& L set all diagnal elements to 0 \\
+& choose top k eigenvectors of L \\
+& these are the clusters with minimum distance \\
+\end{tabular}
+\caption{Example clustering algorithms in SKLearn}
+\end{table}
+
+
+
+
+\end{document}
