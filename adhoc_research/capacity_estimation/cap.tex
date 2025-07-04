@@ -1,0 +1,164 @@
+% generate an example tex article
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\begin{document}
+
+\title{Capacity Estimation}
+\author{Pengfei Gao}
+\date{\today}
+\maketitle
+\tableofcontents
+
+
+
+\section{Background}
+The purpose of this research work is to find out if there is existing SOTA work on capacity estimation.
+
+The capacity estimation problem is to estimate an upper bound of an system output quantity y with some input x.
+
+There are 4 possible research fields that may be related:
+\begin{itemize}
+\item \textbf{statistics / curve fitting}: we may build asymptotic models to estimate the capacity of the system.
+\item \textbf{capacity estimation}: estimate how much the system can handle.
+\item \textbf{Micro Economics}
+\item \textbf{System Identification}: The goal of system identification is to estimate the parameters of a system model from measured input-output data. This can be used to estimate the capacity of a system by identifying the parameters of the system model and then using them to predict the output of the system for a given input.
+\item \textbf{Machine Learning}: Machine learning can be used to estimate the capacity of a system by training a model on data from the system and then using the model to predict the output of the system for a given input.
+\end{itemize}
+
+\section{statistics / curve fitting: asymptotic models}
+Asymptotic regression is a type of nonlinear regression used to model situations where a response variable 
+𝑦
+y approaches a limiting value (an asymptote) as the predictor variable 
+𝑥
+x increases (or decreases).
+
+\subsection{Common Model Form: asymptotic regression model}
+
+A typical form of the asymptotic regression model is:
+
+\includegraphics[width=0.8\textwidth]{./images/asymptotic-1.png}
+\[
+y(x) = A + (B - A) \times (1 - e^{-C x})
+\]
+where:
+\begin{itemize}
+    \item \( A \) = lower asymptote (value as \( x \to -\infty \)),
+    \item \( B \) = upper asymptote (value as \( x \to +\infty \)),
+    \item \( C \) = rate constant (controls how fast \( y \) approaches \( B \)),
+    \item \( e \) = base of the natural logarithm.
+\end{itemize}
+
+\paragraph{Key Ideas}~\\
+\begin{itemize}
+    \item \textbf{Asymptotic} means that \( y \) gets closer and closer to a limit but never quite reaches it.
+    \item It is often used in \textbf{biology}, \textbf{economics}, \textbf{growth models}, \textbf{capacity estimation}, and \textbf{pharmacokinetics}.
+    \item Asymptotic regression is good for modeling \textbf{diminishing returns}, \textbf{saturation effects}, or \textbf{capacity limits}.
+\end{itemize}
+
+\subsection{Common Model Form: Power curve}
+The power curve is also known as Freundlich equation or allometric equation and the most common parameterisation is:
+
+$$
+Y = a X^b = a e^{b \log(X)}
+$$
+\includegraphics[width=0.8\textwidth]{./images/asymptotic-2.png}
+
+\subsection{Common Model Form: Michaelis-Menten equation}
+This is a rectangular hyperbola, often parameterised as:
+
+$$
+Y = \frac{a X}{b + X}
+$$
+\includegraphics[width=0.8\textwidth]{./images/asymptotic-3.png}
+
+or
+
+(Yield-loss/density curves)
+$$
+Y = \frac{i X}{1 + iX / a}
+$$
+where i = a/b
+
+\includegraphics[width=0.8\textwidth]{./images/asymptotic-4.png}
+
+
+\subsection{Common Model Form: Logistic curve}
+The logistic curve derives from the cumulative logistic distribution function; the curve is symmetric around the inflection point and it it may be parameterised as:
+
+$$
+Y = c + \frac{d - c }{1 + e^{b(X-e)}}
+$$
+\includegraphics[width=0.8\textwidth]{./images/asymptotic-5.png}
+
+\href{https://www.statforbiology.com/nonlinearregression/usefulequations}{source}
+
+\subsection{Cobb–Douglas production function}
+In economics and econometrics, the Cobb–Douglas production function is a particular functional form of the production function, widely used to represent the technological relationship between the amounts of two or more inputs (particularly physical capital and labor) and the amount of output that can be produced by those inputs.
+
+
+\section{capacity estimation}
+Capacity estimation is the process of quantifying how much work, output, or demand a system can currently handle — without planning changes yet.
+
+In short:
+
+\begin{itemize}
+\item Capacity planning = figure out what you’ll need and how to meet it (future-focused).
+\item Capacity estimation = figure out what you can handle right now (current-focused).
+\end{itemize}
+
+\paragraph{In more detail:}~\\
+Capacity estimation usually answers questions like:
+
+\begin{itemize}
+\item "Given this setup, how many users can we serve before the system slows down?"
+\item "How many units can this factory produce per day with current machines?"
+\item "How much ad inventory can we deliver if demand increases by 20\%?"
+\end{itemize}
+
+It's measurement, modeling, or prediction based on:
+
+\begin{itemize}
+\item Current system configurations
+\item Past performance data
+\item Physical or technical limits
+\item Testing results (e.g., load testing for servers)
+\end{itemize}
+
+\paragraph{tldr: Capacity planning}~\\
+Lead capacity planning
+Lead capacity strategy, or lead strategy, is the process of increasing production capacity when you're in anticipation of a high demand. 
+
+Example: If you’re a retailer, you may need to hire an influx of seasonal workers during the holidays, whether that’s for a whole season or just for a seasonal sale. By anticipating higher customer traffic, you can better staff your team and add additional headcount over a short period of time. 
+
+Lag strategy planning
+Lag strategy planning is the process of increasing production capacity when you’re experiencing  a real-time demand.
+
+Example: Lag strategy planning is often used in medical care, social work, or the restaurant industry when someone is "on call." Depending on how busy your team is, you may call additional team members in to make sure there are enough resources (in other words, team members) to cover all the customers’ or clients’ needs. 
+
+Match strategy planning
+Match strategy planning is a combination of lead capacity planning and lag strategy planning. The process of match strategy planning requires slowly increasing capacity in small increments until you reach the desired resource utilization.
+
+Example: Let’s take the previous example of the restaurant industry—as a floor manager, you may have several different employees on call for the night. If you get an unexpected large party in, you may decide to call in more than one server to cover until crowds die down.
+
+\subsection{Capacity estimation: related}
+\begin{itemize}
+\item \href{https://www.geeksforgeeks.org/capacity-estimation-in-systems-design/}{Capacity estimation in systems design}
+\item \href{https://www.redhat.com/en/blog/machine-learning-capacity-planning}{Red hat: A machine learning model for system capacity planning}
+\item \href{https://www.nature.com/articles/s41467-022-29837-w}{Nature: Data-driven capacity estimation of commercial lithium-ion batteries from voltage relaxation}
+\end{itemize}
+
+\subsection{Nature: Data-driven capacity estimation of commercial lithium-ion batteries from voltage relaxation}
+\paragraph{Notes:}~\\
+They fully charge \& then discharge the batteries to get the ground truth labels for machine learning, which may not be directly availabel when we try to estimate the capacity from historical data.
+
+conclusion: this is not relavent.
+
+
+\section{Micro Economics}
+\section{System Identification}
+\section{Machine Learning}
+
+\end{document}
